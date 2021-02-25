@@ -2,8 +2,8 @@
 
 #define MAX_DIGITS 7
 #define DIGITS 10
-#define DIGITS_HEIGHT 4
-#define DIGITS_WIDTH_ 4
+#define HEIGHT 4
+#define WIDTH 4
 
 const int segments[DIGITS][MAX_DIGITS] = {
                               {1, 1, 1, 1, 1, 1, 0}, // 0
@@ -18,7 +18,7 @@ const int segments[DIGITS][MAX_DIGITS] = {
                               {1, 1, 1, 1, 0, 1, 1}, // 9
                             };
 
-char digits[4][4*MAX_DIGITS];
+char digits[HEIGHT][WIDTH*MAX_DIGITS];
 
 void clear_digits_array(void);
 void process_digit(int digit, int position);
@@ -48,8 +48,8 @@ int main()
 
 void clear_digits_array(void)
 {
-  for (int i = 0; i < 4; i++)
-    for (int j = 0; j < 4*MAX_DIGITS; j++)
+  for (int i = 0; i < HEIGHT; i++)
+    for (int j = 0; j < WIDTH*MAX_DIGITS; j++)
       digits[i][j] = ' ';
 }
 
