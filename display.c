@@ -38,11 +38,13 @@ int main()
     digit_ch = getchar();
 
     if('0' <= digit_ch && digit_ch <= '9') {
-      num_digit++;
       digit = digit_ch - '0';
       process_digit(digit, num_digit);
+      num_digit++;
     }
   }
+
+  print_digits_array();
 
   return 0;
 }
@@ -58,18 +60,23 @@ void process_digit(int digit, int position)
 {
   int abs_position = WIDTH*position;
   for (int seg = 0; seg < SEG; seg++)
-    if(segments[digits][seg] == 1)
+    if(segments[digit][seg] == 1)
       switch (seg) {
-        case 0: digits[0][abs_position+1] = '_' break;
-        case 1: digits[1][abs_position+2] = '|' break;
-        case 2: digits[2][abs_position+2] = '|' break;
-        case 3: digits[2][abs_position+1] = '_' break;
-        case 4: digits[2][abs_position+0] = '|' break;
-        case 5: digits[1][abs_position+0] = '|' break;
-        case 6: digits[1][abs_position+1] = '_' break;
+        case 0: digits[0][abs_position+1] = '_'; break;
+        case 1: digits[1][abs_position+2] = '|'; break;
+        case 2: digits[2][abs_position+2] = '|'; break;
+        case 3: digits[2][abs_position+1] = '_'; break;
+        case 4: digits[2][abs_position+0] = '|'; break;
+        case 5: digits[1][abs_position+0] = '|'; break;
+        case 6: digits[1][abs_position+1] = '_'; break;
       }
 }
 
 void print_digits_array(void)
 {
+  for (int i = 0; i < HEIGHT; i++) {
+    for (int j = 0; j < WIDTH*MAX_DIGITS; j++)
+      printf("%c", digits[i][j]);
+    printf("\n");
+  }
 }
