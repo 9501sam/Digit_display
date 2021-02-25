@@ -4,6 +4,7 @@
 #define DIGITS 10
 #define HEIGHT 4
 #define WIDTH 4
+#define SEG 7
 
 const int segments[DIGITS][MAX_DIGITS] = {
                               {1, 1, 1, 1, 1, 1, 0}, // 0
@@ -55,7 +56,18 @@ void clear_digits_array(void)
 
 void process_digit(int digit, int position)
 {
-  for (int seg = 0; seg < )
+  int abs_position = WIDTH*position;
+  for (int seg = 0; seg < SEG; seg++)
+    if(segments[digits][seg] == 1)
+      switch (seg) {
+        case 0: digits[0][abs_position+1] = '_' break;
+        case 1: digits[1][abs_position+2] = '|' break;
+        case 2: digits[2][abs_position+2] = '|' break;
+        case 3: digits[2][abs_position+1] = '_' break;
+        case 4: digits[2][abs_position+0] = '|' break;
+        case 5: digits[1][abs_position+0] = '|' break;
+        case 6: digits[1][abs_position+1] = '_' break;
+      }
 }
 
 void print_digits_array(void)
